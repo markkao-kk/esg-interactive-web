@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESG互動式網頁</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            color: #4a4a4a;
+            padding: 0;
+        }
+        .header {
+            background-color: rgba(58, 58, 58, 0.9);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        .header img {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            width: 200px;
+            height: auto;
+            z-index: 20;
+        }
+        .card {
+            margin: 20px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        .card:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+        .btn-custom {
+            background-color: #8C4D93;
+            color: white;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #762F78;
+        }
+        .quiz-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+        .quiz-question {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .quiz-option {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .quiz-option:hover {
+            background-color: #f1f1f1;
+        }
+        .quiz-option.selected {
+            background-color: #8C4D93;
+            color: white;
+            border-color: #8C4D93;
+        }
+        .footer {
+            background-color: rgba(58, 58, 58, 0.9);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .progress-bar {
+            height: 20px;
+            background-color: #8C4D93;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .timer {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://i.imgur.com/vZqepCf.png" alt="Header Image">
+        <h1>明基材料永續學堂</h1>
+      　<p> </p>
+        <p>歡迎來到明基材料的永續發展之旅！🌿✨</p>
+<p>在這裡，您將透過有趣的互動小遊戲，輕鬆探索我們在環境守護、社會關懷與公司治理各方面的努力與成就。</p>
+<p>來一場永續知識與趣味兼具的挑戰吧！看看您是否能成為我們的永續達人？🎮🌍</p>
+<p>讓我們一起邁向更美好的未來吧！</p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <img src="https://i.imgur.com/HOdpPwa.png" alt="環境圖示" style="width:50px; height:50px; margin-bottom:10px;">
+                        <h5 class="card-title">環境永續 (Environmental)</h5>
+                        <p>一起來探索明基材料如何將環保理念融入日常，🌍 不論是創新技術還是節能減碳，每一步都是我們對地球的承諾。快來揭曉我們在環境永續上的成果吧！♻️</p>
+                        <button class="btn btn-custom" onclick="startQuiz('環境永續小學堂')">開始測驗</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <img src="https://i.imgur.com/SxA0kFe.png" alt="社會圖示" style="width:50px; height:50px; margin-bottom:10px;">
+                        <h5 class="card-title">社會關懷 (Social)</h5>
+                        <p>一起看看明基材料如何以行動傳遞溫暖，踐行對社會的承諾！❤️從關懷員工到支持社區，讓我們來連結彼此的力量。快來感受我們的用心與熱情吧！💪</p>
+                        <button class="btn btn-custom" onclick="startQuiz('社會關懷小學堂')">開始測驗</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <img src="https://imgur.com/6UWKZXe.png" alt="治理圖示" style="width:50px; height:50px; margin-bottom:10px;">
+                        <h5 class="card-title">透明治理 (Governance)</h5>
+                        <p>一起揭開明基材料在公司治理上的表現！🏛️ 透明、誠信與創新是我們的核心。快來看看我們如何用卓越的治理實踐，為企業的永續未來鋪路吧！💼</p>
+                        <button class="btn btn-custom" onclick="startQuiz('透明治理小學堂')">開始測驗</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="quiz-container" style="display: none;" id="quiz-container">
+            <h3 class="text-center" id="quiz-title">測驗題目</h3>
+            <div class="timer" id="timer">剩餘時間：60 秒</div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div id="quiz-content">
+    <p class="quiz-question" id="question-text">題目將顯示於此</p>
+    <div id="options-container"></div>
+    <button class="btn btn-primary mt-3 w-100" onclick="submitAnswer()">提交答案</button>
+    <button class="btn btn-danger mt-3 w-100" onclick="exitQuiz()">退出遊戲</button>
+</div>        
+            </div>
+            <p id="quiz-result" class="mt-3 text-center" style="display: none;"></p>
+            <button class="btn btn-secondary mt-3 w-100" style="display: none;" id="retry-button" onclick="retryQuiz()">再玩一次</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 明基材料 - ESG互動網頁</p>
+    </div>
+
+    <script>
+        const quizData = {
+            環境永續小學堂: [
+                {
+                    question: "明基材料預計在2040年達成再生能源100%",
+                    options: ["是", "否"],
+                    correct: 0
+                },
+                {
+                    question: "明基材料每年皆完成溫室氣體外部盤查",
+                    options: ["是", "否"],
+                    correct: 0
+                },
+                {
+                    question: "明基材料預計在2050年達到淨零排放",
+                    options: ["是", "否"],
+                    correct: 0
+                },
+                {
+                    question: "明基材料的產品永續設計策略是從低碳源頭設計、製程低碳優化及包材低碳減量為主",
+                    options: ["是", "否"],
+                    correct: 0
+                },
+                {
+                    question: "明基材料實施內部碳定價並將收取的碳費用於廠內節能減排設備投資、投資再生能源設備及對外購買再生能源",
+                    options: ["是", "否"],
+                    correct: 0
+                }
+            ],
+            社會關懷小學堂: [
+                {
+                    question: "打造多元共榮平等的環境是明基材料永續任務之一",
+                    options: ["是", "否"],
+                    correct: 0
+                },
+                {
+                    question: "明基材料擁有多元意見反映管道，且每年結案率達100%",
+                    options: ["是", "否"],
+                    correct: 0
+                },
+                {
+                    question: "賽恩斯科學營是明基材料從核心技術出發的偏鄉營隊活動",
+                    options: ["是", "否"],
+                    correct: 0
+                },
+                {
+                    question: "台灣農食行動計畫是明基材料對於弱勢小農的援助計畫",
+                    options: ["是", "否"],
+                    correct: 0
+                },
+                {
+                    question: "重視公司及供應鏈勞動人權是明基材料永續任務之一",
+                    options: ["是", "否"],
+                    correct: 0
+                }
+            ],
+            透明治理小學堂: [
+                {
+                    question: "資訊安全是明基材料永續任務之一",
+                    options: ["是", "否"],
+                    correct: 0
+                },
+                {
+                    question: "明基材料每年實施反貪污與誠信經營措施，並進行內部教育訓練",
+                    options: ["是", "否"],
+                    correct: 0
+                },
+                {
+                    question: "明基材料永續委員會分為五大小組，並由最高層級董事長擔任主委",
+                    options: ["是", "否"],
+                    correct: 0
+                },
+                {
+                    question: "為落實公司在永續相關計畫之推動成效，依據各主管的權責範圍，將環境與綠色產品構面列為年度績效目標，權重至少需為5%。",
+                    options: ["是", "否"],
+                    correct: 0
+                },
+                {
+                    question: "明基材料已連續兩年取得 TIPS A級認證",
+                    options: ["是", "否"],
+                    correct: 0
+                }
+            ]
+        };
+
+        let currentCategory = "";
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let timerInterval;
+        let timeLeft = 60;
+
+        function startQuiz(category) {
+            currentCategory = category;
+            currentQuestionIndex = 0;
+            score = 0;
+            timeLeft = 60;
+
+            document.querySelector(".row").style.display = "none";
+            document.getElementById("quiz-container").style.display = "block";
+            document.getElementById("quiz-title").innerText = `${category} 測驗`;
+
+            startTimer();
+            loadQuestion();
+        }
+
+        function startTimer() {
+            const timerElement = document.getElementById("timer");
+            timerElement.innerText = `剩餘時間：${timeLeft} 秒`;
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                timerElement.innerText = `剩餘時間：${timeLeft} 秒`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    showResult();
+                }
+            }, 1000);
+        }
+
+        function loadQuestion() {
+            const questionData = quizData[currentCategory][currentQuestionIndex];
+            document.getElementById("question-text").innerText = questionData.question;
+            const optionsContainer = document.getElementById("options-container");
+            optionsContainer.innerHTML = "";
+
+            questionData.options.forEach((option, index) => {
+                const optionElement = document.createElement("div");
+                optionElement.classList.add("quiz-option");
+                optionElement.innerText = option;
+                optionElement.onclick = () => selectOption(index);
+                optionsContainer.appendChild(optionElement);
+            });
+
+            updateProgressBar();
+        }
+
+        function selectOption(index) {
+            const options = document.querySelectorAll(".quiz-option");
+            options.forEach(option => option.classList.remove("selected"));
+            options[index].classList.add("selected");
+            options[index].dataset.selected = true;
+        }
+
+        function submitAnswer() {
+            const selectedOption = document.querySelector(".quiz-option.selected");
+            if (!selectedOption) {
+                alert("請選擇一個答案");
+                return;
+            }
+
+            const selectedIndex = Array.from(selectedOption.parentNode.children).indexOf(selectedOption);
+            if (selectedIndex === quizData[currentCategory][currentQuestionIndex].correct) {
+                score += 20;
+            }
+
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < quizData[currentCategory].length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            clearInterval(timerInterval);
+            document.getElementById("quiz-content").style.display = "none";
+            const resultElement = document.getElementById("quiz-result");
+            resultElement.style.display = "block";
+            resultElement.innerText = score >= 80
+                ? `恭喜！您獲得了 ${score} 分，成功通過！`
+                : `您獲得了 ${score} 分，未能通過，請再試一次。`;
+
+            document.getElementById("retry-button").style.display = "block";
+        }
+
+        function retryQuiz() {
+    currentCategory = "";
+    currentQuestionIndex = 0;
+    score = 0;
+    timeLeft = 60;
+    clearInterval(timerInterval);
+    document.getElementById("quiz-content").style.display = "block";
+    document.getElementById("quiz-result").style.display = "none";
+    document.getElementById("retry-button").style.display = "none";
+    document.querySelector(".row").style.display = "flex";
+    document.getElementById("quiz-container").style.display = "none";
+} 
+
+function exitQuiz() {
+    currentCategory = "";
+    currentQuestionIndex = 0;
+    score = 0;
+    timeLeft = 60;
+    clearInterval(timerInterval);
+    document.querySelector(".row").style.display = "flex";
+    document.getElementById("quiz-container").style.display = "none";
+}
+
+        function updateProgressBar() {
+            const progressBar = document.getElementById("progress-bar");
+            progressBar.style.width = `${((currentQuestionIndex + 1) / quizData[currentCategory].length) * 100}%`;
+        }
+    </script>
+</body>
+</html>
